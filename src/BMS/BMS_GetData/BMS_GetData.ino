@@ -1,3 +1,15 @@
+// Código para ler e printar os dados do BMS
+
+
+void setup(){
+    Serial.begin(9600);
+}
+
+void loop(){
+    BMS_decode();
+    
+}
+
 void BMS_decode()
 {
     // Declaração das variaveis locais
@@ -8,7 +20,7 @@ void BMS_decode()
     //Coleta dos dados até o Byte 58 do BMS
     if (Serial.available())
     {
-        BMS_byte[i] = Serial2.read();
+        BMS_byte[i] = Serial.read();
         x = BMS_byte[i];
         send();
 
@@ -45,38 +57,6 @@ void BMS_decode()
         Serial.print(",");
         Serial.print(estado_de_carga);
         Serial.println();
-
-        // if (tensao_total <= 60)
-        // {
-        //     // lcd.clear();
-        //     // lcd.setCursor(5, 0);
-        //     // lcd.print("TELEMETRIA");
-
-        //     // lcd.setCursor(0, 1);
-        //     // lcd.print("Vt: ");
-        //     // lcd.setCursor(5, 1);
-        //     // lcd.print(tensao_total);
-        //     // lcd.setCursor(0, 2);
-        //     // lcd.print("Ii: ");
-        //     // lcd.setCursor(5, 2);
-        //     // lcd.print(corrente_entrada);
-        //     // lcd.setCursor(0, 3);
-        //     // lcd.print("Io: ");
-        //     // lcd.setCursor(5, 3);
-        //     // lcd.print(corrente_saida);
-        //     // lcd.setCursor(11, 1);
-        //     // lcd.print("V-: ");
-        //     // lcd.setCursor(16, 1);
-        //     // lcd.print(tensao_minima);
-        //     // lcd.setCursor(11, 2);
-        //     // lcd.print("V+: ");
-        //     // lcd.setCursor(16, 2);
-        //     // lcd.print(tensao_maxima);
-        //     // lcd.setCursor(12, 3);
-        //     // lcd.print("SOC:");
-        //     // lcd.setCursor(17, 3);
-        //     // lcd.print(estado_de_carga);
-        // }
 
         i = 0;
     }
