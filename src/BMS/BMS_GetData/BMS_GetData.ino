@@ -1,5 +1,5 @@
 // Código para ler e printar os dados do BMS
-
+int i = 0;
 
 void setup(){
     Serial.begin(9600);
@@ -21,10 +21,8 @@ void BMS_decode()
     if (Serial.available())
     {
         BMS_byte[i] = Serial.read();
-        x = BMS_byte[i];
-        send();
 
-        Serial.print(x);
+        Serial.print(BMS_byte[i]);
         Serial.print(" ");
 
         i++;
